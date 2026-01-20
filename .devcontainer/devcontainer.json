@@ -1,0 +1,24 @@
+{
+    "name": "Whisper Transcription Environment",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+    "features": {
+        "ghcr.io/devcontainers/features/cuda:11.8": {
+            "installCudnn": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-vscode.remote-explorer"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            }
+        }
+    },
+    "postCreateCommand": "pip install --upgrade pip && pip install openai-whisper torch torchaudio --index-url https://download.pytorch.org/whl/cu118",
+    "forwardPorts": [8888],
+    "remoteUser": "vscode"
+}
